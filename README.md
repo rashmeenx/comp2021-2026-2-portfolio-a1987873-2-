@@ -12,7 +12,7 @@
 
 #### Debugger
 
-![Debugger](d:\Screenshots\Screenshot 2026-08-04 105341.png)
+![Debugger](<Screenshot 2026-08-04 105341.png>)
 
 ---
 
