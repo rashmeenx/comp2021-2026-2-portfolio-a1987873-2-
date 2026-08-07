@@ -7,7 +7,7 @@
 
 #### dotnet --info
 ![info](<Screenshot 2026-08-04 102901.png>)
-(d:\Screenshots\Screenshot 2026-08-04 102912.png)
+![dotnet info](<Screenshot 2026-08-04 102912.png>)
 
 
 #### Debugger
