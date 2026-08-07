@@ -7,12 +7,12 @@
 
 #### dotnet --info
 ![info](<Screenshot 2026-08-04 102901.png>)
-![dotnet info](Screenshot 2026-08-04 102912.png)
+![dotnet info](<Screenshot 2026-08-04 102912.png>)
 
 
 #### Debugger
 
-![Debugger](Screenshot 2026-08-04 105341.png)
+![Debugger](<Screenshot 2026-08-04 105341.png>)
 
 ---
 
