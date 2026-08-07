@@ -3,30 +3,26 @@
 
 ## Workshop 1
 
-### Task 1 - Environment Check
+### Environment Check
 
 #### dotnet --info
-![alt text](<Screenshot 2026-08-04 102901.png>)
+![info](<Screenshot 2026-08-04 102901.png>)
+(d:\Screenshots\Screenshot 2026-08-04 102912.png)
 
 
 #### Debugger
 
-![Debugger](Workshop1/Screenshots/debugger.png)
+![Debugger](d:\Screenshots\Screenshot 2026-08-04 105341.png)
 
 ---
 
-### Task 2 - Payroll Calculator
+### Payroll Calculator
 
-![Payroll Output](Workshop1/Screenshots/payroll-output.png)
+![Payroll Output](<Screenshot 2026-08-07 131022.png>)
 
----
-
-### Task 3 - Person Class
-
-![Person Output](Workshop1/Screenshots/person-output.png)
 
 ---
 
-### Task 4 - Git Log
+### Git Log
 
-![Git Log](Workshop1/Screenshots/git-log.png)
+![Git Log](<Screenshot 2026-08-07 130415.png>)
