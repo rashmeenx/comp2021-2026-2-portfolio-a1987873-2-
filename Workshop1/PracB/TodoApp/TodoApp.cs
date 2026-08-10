@@ -8,7 +8,7 @@ while (true)
     Console.Write("Enter command: ");
     string input = Console.ReadLine() ?? "";
 
-    string[] parts = input.Split(' ', 3);
+    string[] parts = input.Split(' ', 2);
     string command = parts[0].ToLower();
 
     try
@@ -16,124 +16,27 @@ while (true)
         switch (command)
         {
             case "add":
-                if (parts.Length < 2 || string.IsNullOrWhiteSpace(parts[1]))
-                {
-                    Console.WriteLine("Please enter a task to add.");
-                }
-                else
-                {
-                    tasks.Add(parts[1]);
-                    Console.WriteLine("Task added.");
-                }
+                AddTask(parts, tasks);
                 break;
 
             case "show":
-                if (tasks.Count == 0)
-                {
-                    Console.WriteLine("No tasks found.");
-                }
-                else
-                {
-                    for (int i = 0; i < tasks.Count; i++)
-                    {
-                        Console.WriteLine($"{i}: {tasks[i]}");
-                    }
-                }
+                ShowTasks(tasks);
                 break;
 
             case "remove":
-                if (parts.Length < 2)
-                {
-                    Console.WriteLine("Please enter the index of the task to remove.");
-                }
-                else if (!int.TryParse(parts[1], out int index))
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                }
-                else if (index < 0 || index >= tasks.Count)
-                {
-                    Console.WriteLine("That task index does not exist.");
-                }
-                else
-                {
-                    Console.WriteLine($"Removed: {tasks[index]}");
-                    tasks.RemoveAt(index);
-                }
+                RemoveTask(parts, tasks);
                 break;
 
             case "clear":
-                tasks.Clear();
-                tags.Clear();
-                Console.WriteLine("All tasks cleared.");
+                ClearTasks(tasks, tags);
                 break;
 
             case "tag":
-                if (parts.Length < 3)
-                {
-                    Console.WriteLine("Use: tag [index] [name]");
-                    break;
-                }
-
-                if (!int.TryParse(parts[1], out int tagIndex))
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                    break;
-                }
-
-                if (tagIndex < 0 || tagIndex >= tasks.Count)
-                {
-                    throw new IndexOutOfRangeException(
-                        "That task index does not exist."
-                    );
-                }
-
-                string tagName = parts[2];
-
-                if (!tags.ContainsKey(tagName))
-                {
-                    tags[tagName] = new List<int>();
-                }
-
-                if (tags[tagName].Contains(tagIndex))
-                {
-                    throw new ArgumentException(
-                        "That task already has this tag."
-                    );
-                }
-
-                tags[tagName].Add(tagIndex);
-
-                Console.WriteLine(
-                    $"Tagged task {tagIndex} as '{tagName}'."
-                );
+                TagTask(parts, tasks, tags);
                 break;
 
             case "get-tagged":
-                if (parts.Length < 2)
-                {
-                    Console.WriteLine("Use: get-tagged [tag]");
-                    break;
-                }
-
-                string requestedTag = parts[1];
-
-                if (!tags.ContainsKey(requestedTag))
-                {
-                    throw new KeyNotFoundException(
-                        "That tag does not exist."
-                    );
-                }
-
-                Console.WriteLine(
-                    $"Tasks tagged '{requestedTag}':"
-                );
-
-                foreach (int taggedIndex in tags[requestedTag])
-                {
-                    Console.WriteLine(
-                        $"{taggedIndex}: {tasks[taggedIndex]}"
-                    );
-                }
+                ShowTaggedTasks(tasks, tags);
                 break;
 
             case "exit":
@@ -158,5 +61,130 @@ while (true)
     catch (KeyNotFoundException exception)
     {
         Console.WriteLine(exception.Message);
+    }
+}
+
+static void AddTask(string[] parts, List<string> tasks)
+{
+    if (parts.Length < 2 || string.IsNullOrWhiteSpace(parts[1]))
+    {
+        Console.WriteLine("Please enter a task to add.");
+        return;
+    }
+
+    tasks.Add(parts[1]);
+    Console.WriteLine("Task added.");
+}
+
+static void ShowTasks(List<string> tasks)
+{
+    if (tasks.Count == 0)
+    {
+        Console.WriteLine("No tasks found.");
+        return;
+    }
+
+    for (int i = 0; i < tasks.Count; i++)
+    {
+        Console.WriteLine($"{i}: {tasks[i]}");
+    }
+}
+
+static void RemoveTask(string[] parts, List<string> tasks)
+{
+    if (parts.Length < 2)
+    {
+        Console.WriteLine("Please enter the index of the task to remove.");
+        return;
+    }
+
+    if (!int.TryParse(parts[1], out int index))
+    {
+        Console.WriteLine("Please enter a valid number.");
+        return;
+    }
+
+    if (index < 0 || index >= tasks.Count)
+    {
+        throw new IndexOutOfRangeException(
+            "That task index does not exist."
+        );
+    }
+
+    Console.WriteLine($"Removed: {tasks[index]}");
+    tasks.RemoveAt(index);
+}
+
+static void ClearTasks(
+    List<string> tasks,
+    Dictionary<string, List<int>> tags)
+{
+    tasks.Clear();
+    tags.Clear();
+
+    Console.WriteLine("All tasks cleared.");
+}
+
+static void TagTask(
+    string[] parts,
+    List<string> tasks,
+    Dictionary<string, List<int>> tags)
+{
+    if (parts.Length < 2)
+    {
+        Console.WriteLine("Use: tag [index]");
+        return;
+    }
+
+    if (!int.TryParse(parts[1], out int tagIndex))
+    {
+        Console.WriteLine("Please enter a valid number.");
+        return;
+    }
+
+    if (tagIndex < 0 || tagIndex >= tasks.Count)
+    {
+        throw new IndexOutOfRangeException(
+            "That task index does not exist."
+        );
+    }
+
+    string tagName = "tagged";
+
+    if (!tags.ContainsKey(tagName))
+    {
+        tags[tagName] = new List<int>();
+    }
+
+    if (tags[tagName].Contains(tagIndex))
+    {
+        throw new ArgumentException(
+            "That task is already tagged."
+        );
+    }
+
+    tags[tagName].Add(tagIndex);
+
+    Console.WriteLine($"Tagged task {tagIndex}.");
+}
+
+static void ShowTaggedTasks(
+    List<string> tasks,
+    Dictionary<string, List<int>> tags)
+{
+    string tagName = "tagged";
+
+    if (!tags.ContainsKey(tagName))
+    {
+        throw new KeyNotFoundException(
+            "No tagged tasks exist."
+        );
+    }
+
+    Console.WriteLine("Tagged tasks:");
+
+    foreach (int taggedIndex in tags[tagName])
+    {
+        Console.WriteLine($"{taggedIndex}: {tasks[taggedIndex]}");
     }
 }
