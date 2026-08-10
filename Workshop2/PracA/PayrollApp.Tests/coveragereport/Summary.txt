@@ -1,0 +1,24 @@
+Summary
+  Generated on: 11/08/2026 - 4:16:07 AM
+  Coverage date: 11/08/2026 - 4:13:31 AM
+  Parser: Cobertura
+  Assemblies: 1
+  Classes: 2
+  Files: 2
+  Line coverage: 68.5%
+  Covered lines: 48
+  Uncovered lines: 22
+  Coverable lines: 70
+  Total lines: 117
+  Branch coverage: 66.6% (8 of 12)
+  Covered branches: 8
+  Total branches: 12
+  Method coverage: 90% (9 of 10)
+  Full method coverage: 90% (9 of 10)
+  Covered methods: 9
+  Fully covered methods: 9
+  Total methods: 10
+
+PayrollApp     68.5%
+  Payroll       100%
+  Program         0%
