@@ -6,13 +6,13 @@
 ### Environment Check
 
 #### dotnet --info
-![info](<Screenshot 2026-08-04 102901.png>)
-![dotnet info](<Screenshot 2026-08-04 102912.png>)
+![info](<Week1a.Task1.Screenshot1.png>)
+![dotnet info](<Week1a.Task1.Screenshot2.png>)
 
 
 #### Debugger
 
-![Debugger](<Screenshot 2026-08-04 105341.png>)
+![Debugger](<Week1a.Task1.Screenshot3.png>)
 
 ---
 
