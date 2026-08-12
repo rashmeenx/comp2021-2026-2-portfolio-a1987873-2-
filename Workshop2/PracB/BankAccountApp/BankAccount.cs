@@ -1,0 +1,42 @@
+public class BankAccount
+{
+    public string Owner { get; set; }
+    public decimal Balance { get; set; }
+
+    public BankAccount(string owner, decimal balance)
+    {
+        Owner = owner;
+        Balance = balance;
+    }
+
+    public void Deposit(decimal amount)
+    {
+        if (amount <= 0)
+        {
+            throw new ArgumentException(
+                "Deposit amount must be greater than zero."
+            );
+        }
+
+        Balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount <= 0)
+        {
+            throw new ArgumentException(
+                "Withdrawal amount must be greater than zero."
+            );
+        }
+
+        if (amount > Balance)
+        {
+            throw new InvalidOperationException(
+                "Insufficient balance."
+            );
+        }
+
+        Balance -= amount;
+    }
+}
