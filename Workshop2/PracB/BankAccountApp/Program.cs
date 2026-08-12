@@ -2,16 +2,24 @@
 {
     BankAccount account = new BankAccount("Rashmeen", 500m);
 
-    Console.WriteLine($"Owner: {account.Owner}");
-    Console.WriteLine($"Starting balance: ${account.Balance:F2}");
+    decimal decimalAmount = 100.50m;
+    int intAmount = 50;
+    double doubleAmount = 25.75;
 
-    account.Deposit(200m);
-    Console.WriteLine($"After depositing $200: ${account.Balance:F2}");
+    account.Deposit(decimalAmount);
+    Console.WriteLine(
+        $"After decimal deposit: ${account.Balance:F2}"
+    );
 
-    account.Withdraw(100m);
-    Console.WriteLine($"After withdrawing $100: ${account.Balance:F2}");
+    account.Deposit(intAmount);
+    Console.WriteLine(
+        $"After int deposit: ${account.Balance:F2}"
+    );
 
-    account.Withdraw(1000m);
+    account.Deposit(doubleAmount);
+    Console.WriteLine(
+        $"After double deposit: ${account.Balance:F2}"
+    );
 }
 catch (ArgumentException exception)
 {
