@@ -2,8 +2,11 @@ public class SavingsAccount : BankAccount
 {
     public decimal InterestRate { get; set; }
 
-    public SavingsAccount(string owner, decimal balance, decimal interestRate)
-        : base(owner, balance)
+    public SavingsAccount(
+        string owner,
+        decimal balance,
+        decimal interestRate
+    ) : base(owner, balance)
     {
         InterestRate = interestRate;
     }
@@ -14,4 +17,14 @@ public class SavingsAccount : BankAccount
         Balance += interest;
     }
 
+    public override void DisplayAccountInfo()
+    {
+        Console.WriteLine("Account: SavingsAccount");
+
+        base.DisplayAccountInfo();
+
+        Console.WriteLine(
+            $"Interest rate: {InterestRate * 100:F1}%"
+        );
+    }
 }
