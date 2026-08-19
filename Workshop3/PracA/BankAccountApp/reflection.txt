@@ -1,0 +1,5 @@
+1. How does this reduce duplicated code?
+- Inheritance reduces duplicated code because common properties and methods, such as Owner, Balance, Deposit() and Withdraw(), are defined once in the BankAccount base class and reused by the subclasses.
+
+2. What new responsibilities does each subclass have?
+- SavingsAccount.cs adds the responsibility of applying interest, while CheckingAccount.cs adds the responsibility of charging a transaction fee on withdrawals.
