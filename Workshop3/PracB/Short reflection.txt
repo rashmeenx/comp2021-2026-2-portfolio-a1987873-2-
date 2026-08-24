@@ -1,0 +1,7 @@
+Task 4: Reflection and Commit (10 m)
+
+What does polymorphism allow us to do that inheritance alone does not?
+- Polymorphism lets different child classes be treated as the same parent class, but they can still use their own version of a method. For example, FullTimeEmployee and Contractor can both be treated as Employee, but their CalculatePay() methods work differently.
+
+How is this similar or different from Python (or C++)’s behaviour?
+- Python is similar because different objects can also use methods with the same name.
