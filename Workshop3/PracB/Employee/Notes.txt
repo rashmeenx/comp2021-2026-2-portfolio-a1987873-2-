@@ -1,0 +1,1 @@
+Polymorphism lets 'FullTimeEmployee' and 'Contractor' both be treated as 'Employee' objects. When 'CalculatePay()' is called, each object uses its own version of the method, so they can give different pay results. 
