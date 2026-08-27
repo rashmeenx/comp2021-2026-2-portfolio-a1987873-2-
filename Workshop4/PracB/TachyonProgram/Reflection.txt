@@ -1,0 +1,44 @@
+1. In the Main() method: 
+List<string> symbols = [.. srText.Split("\n")];
+List<string> tachyonGrid = symbols[..^1];
+How are the symbols and tachyonGrid variables different? What does [..^1] do?
+
+Answer: The variable symbols contains all the lines from the text file after splitting by new lines.
+The variable tachyonGrid contains all the lines except the last item, no matter whatever the last item is.
+
+2. In the Main() method:
+foreach (var (posX, character) in item.Index())
+How do the posX and character variables increment in each iteration of the loop?
+How is behaviour different than doing a for loop or a foreach over item?
+
+Answer: posX increases by 1 each time through the loop, while it goes through each letter in the character. 
+For example, if:
+item = ".S."
+
+the loop would see, 
+posX = 0, character = "."
+posX = 1, character = "S"
+posX = 2, character = "."
+
+This is different from a normal foreach as it only gives the character, not its position.
+
+It is similar to a for loop because we can also use item[posX] to get the character at each position. .Index() is just a shorter way to get both the index and the character together.
+
+3. In the processSplitter() method:
+There's an edge case where a single empty square has a splitter either side
+.|.|.
+.^.^.
+What does the method currently do for this edge case? Do you think this approach is correct? Why or why not?
+
+Answer: 
+sb[posX - 1] = '|';
+sb[posX + 1] = '|';
+there is one empty square between two splitters.
+Each splitter tries to place a beam into the middle square. As two beams meet in the same square, but the grid cannot show two | characters in one square, so they merge into one visible beam.
+
+I think this behaviour is correct because both beams are travelling into the same position, so they should be treated as one beam instead of two separate beams.
+
+4. In the Main() method:
+What does the program currently output? What's your intuition on why the reported total is incorrect? (No need to find or fix bugs yet)
+
+Answer: Because the program has int totalCount = 0; but it never increases it by using anything like:- totalCount++;
