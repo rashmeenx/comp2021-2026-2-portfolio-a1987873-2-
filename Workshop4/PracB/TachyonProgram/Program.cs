@@ -3,9 +3,9 @@
 namespace TachyonProgram
 {
 
-/// <summary>
-/// Class <c>Program</c> contains the magical tachyon manifold.
-/// </summary>
+    /// <summary>
+    /// Class <c>Program</c> contains the magical tachyon manifold.
+    /// </summary>
     public static class Program
     {
 
@@ -67,10 +67,9 @@ namespace TachyonProgram
             }
         }
 
-        public static void Main(string[] args)
+        public static void Main()
         {
-        
-            var sr = new StreamReader(FileToRead);
+            using StreamReader sr = new(FileToRead);
             string srText = sr.ReadToEnd();
             int totalCount = 0;
 
@@ -78,7 +77,7 @@ namespace TachyonProgram
             List<string> tachyonGrid = symbols[..^1];
 
             Console.WriteLine("Begin Tachyon Manifold start state");
-            foreach (var item in tachyonGrid)
+            foreach (string item in tachyonGrid)
             {
                 Console.WriteLine(item);
             }
@@ -86,8 +85,8 @@ namespace TachyonProgram
 
             for (int posY = 0; posY < tachyonGrid.Count; posY++)
             {
-                var item = tachyonGrid[posY];
-                foreach (var (posX, character) in item.Index())
+                string item = tachyonGrid[posY];
+                foreach ((int posX, char character) in item.Index())
                 {
                     if (character == 'S')
                     {
@@ -105,13 +104,13 @@ namespace TachyonProgram
             }
             Console.WriteLine($"Begin Taychon Manifold end state");
 
-            foreach (var item in tachyonGrid)
+            foreach (string item in tachyonGrid)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine($"End Taychon Manifold end state");
-            Console.WriteLine($"Total Tachyon Manifold splits were: {totalCount}");
-            Console.WriteLine($"If using Example.txt, your total should be 21");
+            Console.WriteLine("End Taychon Manifold end state");
+            Console.WriteLine("Total Tachyon Manifold splits were: {totalCount}");
+            Console.WriteLine("If using Example.txt, your total should be 21");
             Console.WriteLine($"If using Example.txt, your total is {(totalCount == 21 ? "RIGHT": "WRONG")}");
         }
     }
