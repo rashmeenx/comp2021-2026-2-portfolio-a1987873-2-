@@ -5,6 +5,13 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <AnalysisMode>Recommended</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevelStyle>latest-recommended</AnalysisLevelStyle>
+    <AnalysisLevelDesign>latest-recommended</AnalysisLevelDesign>
+    <AnalysisLevelNaming>latest-recommended</AnalysisLevelNaming>
+    <AnalysisLevelReliability>latest-recommended</AnalysisLevelReliability>
   </PropertyGroup>
 
 </Project>
