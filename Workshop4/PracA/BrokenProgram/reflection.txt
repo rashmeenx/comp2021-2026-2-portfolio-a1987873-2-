@@ -1,0 +1,21 @@
+1. Of all the values in the items list, only one of them was wrong. Which value was incorrect? Why were all the other values still correct?
+Answer: One value in the items list became incorrect because the code used Substring() with fixed character positions. Since the numbers in the input have different lengths, the code did not always read the correct characters. The other values were correct because their positions happened to match what the code expected.
+
+2. What was going wrong when iterating through the symbols list?
+Answer: The symbols list had extra spaces. Because of that, "*" was not always read exactly as "*". I fixed this by using .Trim().
+
+3. How did stepping through the code and using the debugger help you find the issues?
+Answer: The debugger helped me see the program run step by step. I could watch 'total', 'i', and 'value' change, so it was easier for me to see where the program started doing the wrong thing.
+
+4. Pick 3 issues that you fixed based on the new code analysis rules - how did they improve your code?
+Answer: Three things that I fixed-
+    (i) Formatting, so that the code was easier to read.
+    (ii) Removing unused args from Main()
+    (iii) Using InvariantCulture with int.Parse() so number parsing is consistent in any kind of language and country, no matter however the person uses their numbers, it should be treated the same.
+
+5. Pick 3 issues that you decided not to fix based on the new code analysis rules - why didn't they need to be fixed?
+Answer: Three things I did not fix-
+    (i) the warning about "Expected total was: 1120"
+    (ii) the warning about the "RIGHT"/"WRONG" messages
+    (iii) the warning suggesting that the Program class should be changed from public to internal
+    I left them unfixed because they did not really affect how the program worked. The public class was still valid, and the other warnings were only suggestions about how the text should be stored.
