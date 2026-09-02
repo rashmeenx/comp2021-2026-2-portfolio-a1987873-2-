@@ -1,0 +1,2 @@
+## Make a change to your "fred" person after calling the ToLinkedList method, did the changes to fred propagate to the List and LinkedList? Why or why not?
+Yes. When I changed Fred's age, the change also appeared in both the List and LinkedList. This is because both collections store references to the same Person object rather than making separate copies of Fred.
