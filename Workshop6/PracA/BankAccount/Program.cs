@@ -26,7 +26,7 @@ class UsingStackQueue
         }
 
         Queue<BankAccount> accountQueue = StackToQueue(bankAccounts);
-
+        
         Console.WriteLine("\nQueue:");
 
         foreach (BankAccount account in accountQueue)
@@ -47,4 +47,6 @@ class UsingStackQueue
 
         return accountQueue;
     }
+
+
 }
