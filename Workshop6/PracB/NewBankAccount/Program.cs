@@ -19,30 +19,32 @@ class UsingLINQ
         bankAccounts.Push(new BankAccount("Lina", 9000));
         bankAccounts.Push(new BankAccount("Rashmeen", 10000));
 
+        Queue<BankAccount> accountQueue = new Queue<BankAccount>(bankAccounts);
+
         // Stack
-        var stackOwners = bankAccounts
-            .Select(x => x.Owner)
-            .OrderBy(x => x);
+        var stackResults = bankAccounts
+            .Where(x => x.Owner.Contains("e"))
+            .Select(x => new { x.Owner, x.Balance })
+            .OrderBy(x => x.Balance);
 
-        Console.WriteLine("Stack Owners:");
+        Console.WriteLine("Stack Results:");
 
-        foreach (string owner in stackOwners)
+        foreach (var account in stackResults)
         {
-            Console.WriteLine(owner);
+            Console.WriteLine($"{account.Owner}: {account.Balance}");
         }
 
         // Queue
-        Queue<BankAccount> accountQueue = new Queue<BankAccount>(bankAccounts);
+        var queueResults = accountQueue
+            .Where(x => x.Owner.Contains("e"))
+            .Select(x => new { x.Owner, x.Balance })
+            .OrderBy(x => x.Balance);
 
-        var queueOwners = accountQueue
-            .Select(x => x.Owner)
-            .OrderBy(x => x);
+        Console.WriteLine("\nQueue Results:");
 
-        Console.WriteLine("\nQueue Owners:");
-
-        foreach (string owner in queueOwners)
+        foreach (var account in queueResults)
         {
-            Console.WriteLine(owner);
+            Console.WriteLine($"{account.Owner}: {account.Balance}");
         }
     }
 }
