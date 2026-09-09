@@ -33,6 +33,15 @@ class UsingStackQueue
         {
             Console.WriteLine(account);
         }
+
+        Queue<BankAccount> sortedQueue = SortQueue(accountQueue);
+
+        Console.WriteLine("\nSorted Queue:");
+
+        foreach (BankAccount account in sortedQueue)
+        {
+            Console.WriteLine(account);
+        }
     }
 
     public static Queue<BankAccount> StackToQueue(
@@ -46,6 +55,17 @@ class UsingStackQueue
         }
 
         return accountQueue;
+    }
+
+    public static Queue<BankAccount> SortQueue(Queue<BankAccount> bankAccounts)
+    {
+        List<BankAccount> accountList = new List<BankAccount>(bankAccounts);
+
+        accountList.Sort((a, b) => a.Balance.CompareTo(b.Balance));
+
+        Queue<BankAccount> sortedQueue = new Queue<BankAccount>(accountList);
+
+        return sortedQueue;
     }
 
 
